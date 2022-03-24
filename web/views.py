@@ -154,7 +154,7 @@ def select_database(request):
         prod = request.POST.get('product', '')
         env = request.POST.get('env', '')
         try:
-            userobj = models.UserProfile.objects.get(product=prod, env=env)
+            userobj = models.UserProfile.objects.get(product__name=prod, env=env)
             result = sqltools.select_database(userobj.mysql_host, userobj.mysql_port, userobj.mysql_user, userobj.mysql_pwd)
             return HttpResponse(json.dumps(result))
         except Exception as e:
