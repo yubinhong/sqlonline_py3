@@ -82,7 +82,7 @@ def index(request):
                 result['code'] = "300005"
                 return HttpResponse(json.dumps(result))
         try:
-            userobj = models.UserProfile.objects.get(product=prod, env=env)
+            userobj = models.UserProfile.objects.get(product__name=prod, env=env)
             result = sqltools.select(userobj.mysql_host, userobj.mysql_port, userobj.mysql_user, userobj.mysql_pwd, sql, database)
             return HttpResponse(json.dumps(result))
         except Exception as e:
