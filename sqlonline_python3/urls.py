@@ -26,3 +26,5 @@ urlpatterns = [
     path('login/', views.my_login),
     path('logout/', views.my_logout)
 ]
+
+handler500 = views.page_error

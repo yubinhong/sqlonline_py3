@@ -5,6 +5,7 @@ from backend import sqltools
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from backend.security import login_required
+import sys
 # Create your views here.
 
 
@@ -161,3 +162,11 @@ def select_database(request):
             result['message'] = "The product and env is not exists"
             result['code'] = "300003"
             return HttpResponse(json.dumps(result))
+
+
+def page_error(request):
+    error = sys.exc_info()
+    context = {
+        'error': error
+    }
+    return render(request, '500.html', context=context)
