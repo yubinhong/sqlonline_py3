@@ -1,0 +1,6 @@
+venv
+.idea
+web/migrations
+db.sqlite3
+.vscode
+*.pyc

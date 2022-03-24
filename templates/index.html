@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>sql在线查询</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">sql在线查询</a>
+        </div>
+    </nav>
+
+
+
+
+<div class="container">
+    <div class="alert-wrapper">
+        <div class="alert alert-primary" role="alert">
+            sql在线查询
+        </div>
+    </div>
+    <div class="filter-wrapper">
+        <form id="form1">
+            {% csrf_token %}
+            <div class="form-group row align-items-center">
+                <div class="col-sm-2">产品</div>
+                <div class="col-sm-10 row">
+                    <div class="col-4">
+                        <select id="product" name="product" onchange="get_env()">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-sm-2">环境</div>
+                <div class="col-sm-10 row">
+                    <div class="col-4">
+                        <select id="env" name="env" onchange="get_database()">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-sm-2">数据库</div>
+                <div class="col-sm-10 row">
+                    <div class="col-4">
+                        <select id="database" name="database">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-sm-2">sql</div>
+                <div class="col-sm-10 row">
+                    <div class="col-12">
+                        <textarea class="form-control" rows="5" cols="20" name="sql" value="" placeholder="select * from table ........" onkeypress="EnterPress(event)"></textarea>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <button id="btn" class="btn btn-primary" onclick="confirmAct()">
+            <b>查询</b>
+        </button>
+{#        <button id="btn2" class="btn btn-primary hide" data-toggle="modal" data-target="#myModal">#}
+{#            <b>结果</b>#}
+{#        </button>#}
+    </div>
+        <hr>
+    <div class="table">
+{#        <table id="table" border="0" align="top" cellpadding="0" cellspacing="0" bgcolor="#eeeeee">#}
+<table id="table" border="0" cellspacing="1" cellpadding="1">
+        </table>
+    </div>
+
+    <!--
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  结果
+</button>
+-->
+
+</div>
+
+
+<div id="mask" class="mask"></div>
+    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					提示
+				</h4>
+			</div>
+			<div class="modal-body">
+                <div id="advisor">
+
+                </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js" crossorigin="anonymous"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
