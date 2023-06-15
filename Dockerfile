@@ -1,6 +1,6 @@
 FROM frolvlad/alpine-python3:latest
 RUN apk update && apk add sqlite && rm -rf /var/cache/apk
-RUN pip3 install Django==3.2.19 PyMySQL==1.0.2
+RUN pip3 install Django==4.0.3 PyMySQL==1.0.2
 ADD . /opt/sqlonline/
 WORKDIR /opt/sqlonline
 RUN python3 manage.py makemigrations && python3 manage.py migrate
